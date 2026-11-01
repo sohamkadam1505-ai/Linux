@@ -1,0 +1,23 @@
+Practical 7 - Disk Management in Linux
+
+Task 1: Identify the new disk
+lsblk
+
+Task 2: Create GPT partition and Linux LVM partition
+sudo fdisk /dev/sdb
+
+Task 3: Create physical volume, volume group and logical volume
+sudo pvcreate /dev/sdb1
+sudo pvdisplay
+
+Task 4: Format the logical volume with XFS
+sudo mkfs.xfs /dev/dbvg/dblv
+
+Task 5: Mount to /var/lib/mysql and add to /etc/fstab
+sudo mkdir /var/lib/mysql
+sudo mount /dev/dbvg/dblv /var/lib/mysql
+sudo nano /etc/fstab
+
+Task 6: Verify with lsblk -f and df -Th
+lsblk -f
+df -Th

@@ -1,0 +1,29 @@
+Practical 5 - Configure Firewalld
+
+Task 1: Check firewall status
+sudo systemctl status firewalld
+
+Task 2: Set the default zone
+sudo firewall-cmd --set-default-zone=public
+sudo firewall-cmd --reload
+
+Task 3: Allow HTTP and block ping
+sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --reload
+sudo firewall-cmd --add-icmp-block-inversion --permanent
+
+Task 4: Create a new zone office
+sudo firewall-cmd --new-zone=office --permanent
+sudo firewall-cmd --get-zones
+sudo firewall-cmd --reload
+
+Task 5: Add source to office zone
+sudo firewall-cmd --zone=office --add-source=192.168.10.0/24 --permanent
+sudo firewall-cmd --reload
+
+Task 6: Allow services and custom port in office zone
+sudo firewall-cmd --zone=office --add-service=http --permanent
+sudo firewall-cmd --zone=office --add-service=https --permanent
+sudo firewall-cmd --zone=office --add-service=ssh --permanent
+sudo firewall-cmd --zone=office --add-port=8443/tcp --permanent
+sudo firewall-cmd --reload

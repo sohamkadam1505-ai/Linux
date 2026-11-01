@@ -1,0 +1,36 @@
+Practical 1 - File and Directory Management
+
+Task 1: Create the directory structure
+sudo mkdir -p /srv/techfirm/{html,logs,backups,config}
+
+Task 2: Create index.html
+cd /srv/techfirm/html
+sudo touch index.html
+sudo nano index.html
+
+Task 3: Create user, group and add user to group
+sudo groupadd webteam
+sudo useradd webdev
+sudo usermod -aG webteam webdev
+id webdev
+
+Task 4: Set ownership recursively
+sudo chown -R webdev:webteam /srv/techfirm/
+
+Task 5: Set permissions
+sudo chmod 755 /srv
+cd /srv
+sudo chmod 755 techfirm
+cd techfirm
+sudo chmod 755 html
+sudo chmod 755 logs
+sudo chmod 755 backups
+sudo chmod 755 config
+cd html
+sudo chmod 644 index.html
+cd ../logs
+sudo mkdir directory
+sudo chmod 770 directory/
+
+Task 6: Verify the structure and permissions
+ls -lR /srv/techfirm

@@ -1,0 +1,44 @@
+Practical 9 - Docker Container Lifecycle and Images
+
+Task 1: Check installation and running status
+sudo dnf install podman
+
+Task 2: Display the container tool version
+podman -V
+
+Task 3: Search for the official nginx image
+podman search nginx
+
+Task 4: Pull nginx image and verify download
+podman pull docker.io/library/nginx
+podman images
+
+Task 5: Start webserver container in detached mode and map ports
+podman run -dt -p 8080:80/tcp --name webserver docker.io/library/nginx
+
+Task 6: Verify container and web page
+podman ps
+
+Task 7: Stop the running container
+podman stop webserver
+podman ps
+
+Task 8: Restart the container and verify
+podman start webserver
+podman ps
+
+Task 9: Stop and remove the webserver container
+podman stop webserver
+podman ps
+podman ps -a
+podman rm webserver
+podman ps -a
+
+Task 10: Remove nginx image
+podman images
+podman rmi -f nginx
+podman images
+
+Task 11: Verify no nginx containers or images remain
+podman ps -a
+podman images

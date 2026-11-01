@@ -1,0 +1,23 @@
+Practical 6 - Process Management
+
+Task 1: Display top 5 processes sorted by CPU
+ps aux --sort=-%cpu | head -n 6
+
+Task 2: Find zombie processes
+top -b -n 1 | grep zombie
+ps aux | awk '$8 == "Z" {print}'
+
+Task 3: Identify the process using port 80
+sudo ss -tulpn | grep ':80'
+
+Task 4: Send SIGHUP to httpd
+pgrep -x httpd
+sudo kill -HUP 32159
+
+Task 5: Find httpd main PID and renice it to 10
+pgrep -o httpd
+sudo renice -n 10 -p 32608
+ps -o ni -p 32608
+
+Task 6: Verify nice value using ps
+ps -o pid,ni -p 32608

@@ -1,0 +1,26 @@
+Practical 8 - Networking in Linux
+
+Task 1: Identify network interface
+ip addr
+
+Task 2: Set static IP address and gateway using nmcli
+sudo nmcli connection modify ens33 ipv4.addresses 192.168.1.50/24
+sudo nmcli connection modify ens33 ipv4.gateway 192.168.1.1
+
+Task 3: Set hostname
+sudo hostnamectl set-hostname webserver01.lab.local
+hostnamectl
+
+Task 4: Configure DNS servers
+sudo nmcli connection modify ens33 ipv4.dns '8.8.8.8 8.8.4.4'
+sudo nmcli connection modify ens33 ipv4.method manual
+sudo nmcli connection down ens33 && sudo nmcli connection up ens33
+
+Task 5: Add secondary IP to the same interface
+sudo nmcli connection modify ens33 +ipv4.addresses 192.168.1.51/24
+sudo nmcli connection up ens33
+
+Task 6: Test gateway, name resolution and DNS configuration
+ping -c 4 192.168.1.1
+ping -c 4 webserver01.lab.local
+sudo nano /etc/resolv.conf

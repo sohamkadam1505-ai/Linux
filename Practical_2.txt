@@ -1,0 +1,19 @@
+Practical 2 - Text File Editing Using Vim
+
+Task 1: Open the motd file in Vim
+cp /etc/motd guest/
+cd guest
+vim motd
+
+Task 2: Enable line numbers
+:set number
+
+Task 3: Enable syntax highlighting
+:set syntax=sh
+
+Task 4: Save the file
+:wq
+
+Task 5: Verify line count and content
+wc -l motd
+cat motd

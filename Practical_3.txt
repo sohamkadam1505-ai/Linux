@@ -1,0 +1,29 @@
+Practical 3 - Users and Group Management
+
+Task 1: Create group
+sudo groupadd devteam
+
+Task 2: Create users
+sudo useradd Alice
+sudo useradd Bob
+sudo useradd Charlie
+
+Task 3: Set temporary password for each user
+sudo passwd Alice
+sudo passwd Bob
+sudo passwd Charlie
+
+Task 4: Force password change
+sudo passwd -e Alice
+sudo passwd -e Bob
+sudo passwd -e Charlie
+
+Task 5: Set password expiry
+sudo chage -M 30 Alice
+sudo chage -M 30 Bob
+sudo chage -M 30 Charlie
+
+Task 6: Create project directory, set group ownership and permissions
+sudo mkdir /srv/devproject/
+sudo chown root:devteam /srv/devproject/
+sudo chmod 2770 /srv/devproject/

@@ -1,0 +1,26 @@
+Practical 4 - Configure and Manage Sudo
+
+Task 1: Create users
+sudo useradd jradmin
+sudo passwd jradmin
+sudo useradd dbal
+sudo passwd dbal
+
+Task 2: Create sudoers rule for jradmin
+sudo nano /etc/sudoers.d/jradmin
+sudo chmod 440 /etc/sudoers.d/jradmin
+
+Task 3: Create sudoers rule for dbal
+sudo visudo
+su - dbal
+sudo updatedb
+
+Task 4: Enable sudo logging
+sudo visudo
+
+Task 5: Validate and test
+su - jradmin
+sudo systemctl restart httpd
+
+Task 6: Check the sudo log
+sudo tail -f /var/log/sudo.log

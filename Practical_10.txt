@@ -1,0 +1,28 @@
+Practical 10 - Scheduling and Managing Cron Jobs
+
+Task 1: Check existing cron jobs
+crontab -l
+
+Task 2: Create a cron job that runs every minute
+crontab -e
+* * * * * /home/centos/cron/create.sh
+
+Task 3: Verify cron log updates
+sudo tail -n 50 /var/log/cron
+
+Task 4: Schedule a daily 7:00 AM cron job
+crontab -e
+0 7 * * * /home/centos/cron/create.sh
+
+Task 5: Schedule a Sunday 11:59 PM cron job
+crontab -e
+59 23 * * 0 /home/centos/cron/create.sh
+
+Task 6: List and verify cron jobs
+crontab -l
+
+Task 7: Remove the every-minute task
+crontab -e
+
+Task 8: Verify it was deleted
+crontab -l
